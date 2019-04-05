@@ -12,17 +12,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getFriends();
-  }
-
-  getFriends = _ => {
     axios
       .get("http://localhost:5000/friends")
       .then(resp => {
         this.setState({ friends: resp.data });
       })
       .catch(console.log);
-  };
+  }
 
   onSubmit = (e, friend) => {
     let existingFiend = this.state.friends.find(
