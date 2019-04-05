@@ -28,16 +28,24 @@ class App extends Component {
     onSubmit = (e, friend) => {
         axios
             .post("http://localhost:5000/friends", friend)
-            .then(_ => this.getFriends())
+            .then(resp => this.setState({friends: resp.data }))
             .catch(console.log)
 
         e.preventDefault();
     }
 
+    deleteFriend = (friend) => {
+      console.log(friend);
+      axios
+          .delete(`http://localhost:5000/friends/${friend.id}`)
+          .then(resp => this.setState({friends: resp.data}))
+          .catch(console.log)
+    }
+
   render() {
     return (
       <div className="App">
-        <Friends friends={this.state.friends} onSubmit={this.onSubmit} />
+        <Friends friends={this.state.friends} onSubmit={this.onSubmit} deleteFriend={this.deleteFriend} />
       </div>
     );
   }
