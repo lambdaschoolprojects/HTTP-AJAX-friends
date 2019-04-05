@@ -8,7 +8,6 @@ const Friend = ({ friend, deleteFriend, selectFriend }) => {
         onClick={_ => selectFriend(friend)}
         style={{ display: "inline-block" }}
       >
-        <span className="friendId">{friend.id} </span>
         <span className="friendName">{friend.name}, </span>
         <span className="friendAge">age {friend.age}: </span>
         <span className="friendEmail">{friend.email}</span>

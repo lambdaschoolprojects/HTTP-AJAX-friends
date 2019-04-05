@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class FriendForm extends Component {
   state = {
     friend: {
-      id: "auto",
       name: "",
       age: "",
       email: ""
@@ -28,11 +27,21 @@ class FriendForm extends Component {
     });
   };
 
+  onHandleSubmit = e => {
+    this.props.onSubmit(e, this.state.friend);
+    this.setState({ friend: { name: "", age: "", email: "" } });
+  };
+
   render() {
     let { name, age, email } = this.state.friend;
     return (
-      <form onSubmit={e => this.props.onSubmit(e, this.state.friend)}>
-        <input type="text" name="id" disabled value={this.state.friend.id} />
+      <form onSubmit={e => this.onHandleSubmit(e)}>
+        <input
+          type="text"
+          name="id"
+          disabled
+          value={this.state.friend.id ? this.state.friend.id : "auto"}
+        />
         <input
           type="text"
           name="name"

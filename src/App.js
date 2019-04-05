@@ -24,8 +24,10 @@ class App extends Component {
     let existingFiend = this.state.friends.find(
       myFriend => myFriend.id === friend.id
     );
-    if (existingFiend) this.updateFriend(existingFiend);
-    else
+    if (existingFiend) {
+      this.updateFriend(existingFiend);
+      this.setState({ selectedFriend: null });
+    } else
       axios
         .post("http://localhost:5000/friends", friend)
         .then(resp => this.setState({ friends: resp.data }))
