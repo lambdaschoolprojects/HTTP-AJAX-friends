@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class FriendForm extends Component {
     state = {
@@ -21,7 +22,7 @@ class FriendForm extends Component {
     render() {
         let { name, age, email } = this.state.friend;
         return (
-            <form>
+            <form onSubmit={e => this.props.onSubmit(e, this.state.friend)}>
                 <input type="text" name="name" placeholder="Name" onChange={ this.changeHandler } value={name}/>
                 <input type="text" name="age" placeholder="Age" onChange={ this.changeHandler } value={age}/>
                 <input type="text" name="email" placeholder="Email" onChange={ this.changeHandler } value={email} />

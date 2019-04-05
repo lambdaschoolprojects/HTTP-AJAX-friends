@@ -3,12 +3,12 @@ import React from 'react';
 import Friend from './Friend';
 import FriendForm from './FriendForm';
 
-const Friends = ({ friends }) => {
+const Friends = ({ friends, onSubmit }) => {
     console.log(friends);
     return (
         <>
         <h2>These are my friends</h2>
-            <FriendForm/>
+            <FriendForm onSubmit={onSubmit}/>
         { getFriends(friends)}
         </>
     );
